@@ -1,0 +1,267 @@
+
+:root {
+  --background: rgb(249, 204, 24);
+  --primary: rgb(246, 226, 137);
+  --secondary: rgb(251, 239, 171);
+  --dark: rgb(59, 59, 59);
+  --bright: rgb(255, 253, 221);
+  --date: rgb(105, 58, 139);
+  --sub-date: rgb(134, 58, 139);
+  --event-text: rgb(242, 217, 248);
+  --event-text-subtle: lavender;
+
+  font-family: Helvetica, sans-serif;
+}
+
+body {
+    background-color: var(--background);
+}
+
+header {
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+ @media screen and (max-width: 400px) {
+    header img {
+        width: 88%;
+        height: auto;
+        margin: 0;
+    }
+} 
+
+.otd-section {
+    width: 500px;
+    margin: 100px 50px;
+    padding: 0;
+}
+
+.otd-section__title{
+    position: relative;
+    box-sizing: border-box;
+    border: 0.3em solid black;
+    background-color: var(--primary);
+    width: 100%;
+
+    padding: 5px;
+    font-size: 1.125rem;
+    text-align: center;
+
+    /* Drop Shadow don't work */
+    /* This one does vvvvvvvv */
+    /* box-shadow: 0.3em 0.3em 0 6px rgba(0, 0, 0, 1); */
+
+    &::before {
+        content: "";
+        position: absolute;
+        transform-origin: 0 0;
+        z-index: -1;
+
+        width: 102%;
+        height: 0.5em;
+        transform: skewx(45deg);
+        top: 1.98em;
+        left: -0.29em;
+        background: rgba(0, 0, 0, 0.8);
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        transform-origin: 0 0;
+        z-index: -1;
+
+        width: 0.5em;
+        height: 133%;
+        transform: skewy(45deg);
+        top: -0.29em;
+        left: 101%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: -2;
+    }
+}
+
+.otd-section__container {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: inset 0px 0px 12px 4px rgba(0, 0, 0, 0.15);
+    background-color: var(--secondary);
+}
+
+.otd-section__container--events {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.otd-section__container--events a:link{
+    text-decoration: none;
+}
+
+.otd-section__container--events a:visited{
+    text-decoration: none;
+}
+
+.otd-event > a {
+    font-size: 0.8rem;
+    box-sizing: border-box;
+    /* border: 0.5em solid var(--bright); */
+    background-color: var(--dark);
+    color: rgb(255, 255, 255);
+    padding: 0.5em 0.5em 0.3em 0.5em;
+
+    display: flex;
+
+    margin: 10px;
+    box-shadow: 0px 8px 8px -6px rgba(0, 0, 0, 0.5);
+}
+
+.otd-event:not(:has(> a)) {
+  font-size: 0.8rem;
+    box-sizing: border-box;
+    /* border: 0.5em solid var(--bright); */
+    background-color: var(--dark);
+    color: rgb(255, 255, 255);
+    padding: 0.5em 0.5em 0.3em 0.5em;
+
+    display: flex;
+
+    margin: 10px;
+    box-shadow: 0px 8px 8px -6px rgba(0, 0, 0, 0.5);
+}
+
+.otd-event__date {
+    grid-area: date;
+    background-color: var(--date);
+    width: 6em;
+    height: 6em;
+    margin: 0;
+    
+    text-align: center;
+ 
+}
+
+.otd-event__date--month{ 
+    text-transform: uppercase;
+    font-size: 0.9em;
+    display: block;
+    letter-spacing: 1em;
+    text-indent: 1em;
+    margin: 0 auto;
+    margin-top: 0.5em;
+    font-weight: 900;
+}
+.otd-event__date--day{ 
+    font-size: 4em;
+}
+
+
+.otd-event__main-info {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 0;
+    margin-left: 1em;
+    width: 100%;
+}
+
+
+.otd-event__location {
+    margin: 0;
+    text-align: center;
+}
+
+.otd-event__lineup {
+    margin: 0;
+    font-size: 0.8em;
+    margin-top: 0.3em;
+    color: var(--event-text);
+}
+
+.otd-event__description {
+    margin: 0;
+    font-size: 0.8em;
+    margin-top: 0.5em;
+    color: var(--event-text-subtle);
+}
+
+.otd-event__additional {
+    margin: 0;
+    font-size: 0.8em;
+    margin-top: auto;
+    text-align: right;
+    color: var(--event-text-subtle);
+}
+
+.otd-event__time-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.otd-event__doors {
+    margin: 0;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    font-size: 0.8em;
+    width: 100%;
+    text-align: center;
+    background-color: var(--sub-date);
+}
+
+
+.otd-section__container--music {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.diamondButton {
+    box-sizing: border-box;
+    border: 0px solid black;
+    background-color: brown;
+    display: flex;
+    width: 80px;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+    color: cornsilk;
+    margin: 30px;
+    flex-shrink: 0;
+    transform: rotate(0.125turn);
+    transition: box-shadow 0.15s, border 0.1s, width 0.5s, height 0.5s, background-color 0.5s;
+}
+
+.diamondButton span {
+    transform: rotate(-0.125turn);
+}
+/* Above does what below does, maybe better */
+.levelText {
+    transform: rotate(-0.125turn);
+}
+
+.diamondButton:hover {
+    box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+
+.diamondButton:active {
+    box-shadow: 4px 4px 16px 0 rgba(0,0,0,0.3);
+    border: 5px solid gold;
+    background-color: rgb(189, 39, 39);
+}
+
+
+
