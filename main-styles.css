@@ -1,16 +1,17 @@
 
 :root {
-  --background: rgb(249, 204, 24);
-  --primary: rgb(246, 226, 137);
-  --secondary: rgb(251, 239, 171);
-  --dark: rgb(59, 59, 59);
-  --bright: rgb(255, 253, 221);
-  --date: rgb(105, 58, 139);
-  --sub-date: rgb(134, 58, 139);
+  --background: rgb(0, 0, 0); /*rgb(249, 204, 24) */
+  --primary: rgb(249, 204, 24);
+  --secondary: rgb(246, 226, 137); /*rgb(251, 239, 171)*/
+  --dark: black;
+  --bright: white;
+  --date: rgb(105, 58, 139); /*rgb(105, 58, 139)*/
+  --sub-date: rgb(134, 58, 139);/*rgb(134, 58, 139)*/
   --event-text: rgb(242, 217, 248);
   --event-text-subtle: lavender;
+  --border: black;
 
-  font-family: Helvetica, sans-serif;
+  font-family:  Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
 }
 
 body {
@@ -19,16 +20,20 @@ body {
 
 header {
     text-align: center;
+    filter: invert(1);
 }
 
 header h1 {
-    margin: 0;
+    margin: 20px;
+    margin-bottom: 40px;
 }
 
 main {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
+    align-items:start;
+    align-content: start;
 }
 
  @media screen and (max-width: 400px) {
@@ -41,15 +46,25 @@ main {
 
 .otd-section {
     width: 500px;
-    margin: 100px 50px;
+    margin: 10px 20px;
     padding: 0;
 }
 
 .otd-section__title{
     position: relative;
     box-sizing: border-box;
-    border: 0.3em solid black;
-    background-color: var(--primary);
+    /* border: 0.2em solid var(--primary); */
+    color: var(--bright);
+    border-width: 30px;
+    border-style: solid;
+    border-image: url("/img/border-white-gritt.png") 60 fill repeat;
+
+    background-color:var(--dark);
+    /* background-image: radial-gradient(var(--primary) 15%, transparent 16%),
+    radial-gradient(var(--primary) 15%, transparent 16%);
+    background-size: 20px 20px;
+    background-position: 0 0, 30px 30px; */
+
     width: 100%;
 
     padding: 5px;
@@ -60,17 +75,15 @@ main {
     /* This one does vvvvvvvv */
     /* box-shadow: 0.3em 0.3em 0 6px rgba(0, 0, 0, 1); */
 
-    &::before {
+    /* &::before {
         content: "";
         position: absolute;
-        transform-origin: 0 0;
         z-index: -1;
 
-        width: 102%;
+        width: 100%;
         height: 0.5em;
-        transform: skewx(45deg);
-        top: 1.98em;
-        left: -0.29em;
+        vertical-align: bottom;
+        transform: skewx(45deg) translate(-11.08em,1.6em);
         background: rgba(0, 0, 0, 0.8);
     }
     &::after {
@@ -86,7 +99,7 @@ main {
         left: 101%;
         background: rgba(0, 0, 0, 0.8);
         z-index: -2;
-    }
+    } */
 }
 
 .otd-section__container {
@@ -95,7 +108,12 @@ main {
     padding: 15px;
     border-radius: 15px;
     box-shadow: inset 0px 0px 12px 4px rgba(0, 0, 0, 0.15);
-    background-color: var(--secondary);
+    background-color: var(--primary);
+    /* background-image: radial-gradient(var(--dark) 15%, transparent 16%),
+    radial-gradient(var(--dark) 15%, transparent 16%);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px; */
+
 }
 
 .otd-section__container--events {
@@ -113,7 +131,7 @@ main {
 }
 
 .otd-event > a {
-    font-size: 0.8rem;
+    font-size: 1rem;
     box-sizing: border-box;
     /* border: 0.5em solid var(--bright); */
     background-color: var(--dark);
@@ -127,7 +145,7 @@ main {
 }
 
 .otd-event:not(:has(> a)) {
-  font-size: 0.8rem;
+    font-size: 1rem;
     box-sizing: border-box;
     /* border: 0.5em solid var(--bright); */
     background-color: var(--dark);
@@ -226,41 +244,69 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    background-color: brown;
+}
+.otd-section--social {
+    width: fit-content;
+}
+.otd-section--social h2{
+    width: 100%;
 }
 
-.diamondButton {
-    box-sizing: border-box;
-    border: 0px solid black;
-    background-color: brown;
+.otd-section__container--social {
     display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: brown;
+    width: fit-content;
+}
+
+.diamondButton {  
     width: 80px;
     height: 80px;
-    justify-content: center;
-    align-items: center;
-    color: cornsilk;
-    margin: 30px;
-    flex-shrink: 0;
     transform: rotate(0.125turn);
-    transition: box-shadow 0.15s, border 0.1s, width 0.5s, height 0.5s, background-color 0.5s;
 }
 
 .diamondButton span {
     transform: rotate(-0.125turn);
 }
-/* Above does what below does, maybe better */
-.levelText {
-    transform: rotate(-0.125turn);
+
+/* .diamondButton:hover {
+    filter: drop-shadow(5px 2px rgba(0,0,0,0.5)) !important; 
+} */
+
+.coolButton {
+    box-sizing: border-box;
+    border: 0px solid black;
+    background-color: rgb(37, 97, 71); /*brown*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary);
+    margin: 30px;
+    flex-shrink: 0;
+    transition: box-shadow 0.15s, border 0.1s, width 0.5s, height 0.5s, background-color 0.5s;
+    text-decoration: none;
+    box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.11);
+
 }
 
-.diamondButton:hover {
-    box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.2);
+
+.coolButton:hover {
+    box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.25);
 }
 
 
-.diamondButton:active {
+.coolButton:active {
     box-shadow: 4px 4px 16px 0 rgba(0,0,0,0.3);
     border: 5px solid gold;
-    background-color: rgb(189, 39, 39);
+}
+
+.bigButton {
+    width: 80%;
+    height: 80px;
+    filter: drop-shadow(3px 4px black);
 }
 
 
