@@ -5,19 +5,14 @@
   --secondary: rgb(246, 226, 137); /*rgb(251, 239, 171)*/
   --dark: black;
   --bright: white;
-  --date: rgb(185, 38, 38); /*rgb(105, 58, 139)*/
-  --sub-date: rgb(178, 178, 178);/*rgb(134, 58, 139)*/
-  --event-text: rgb(53, 2, 65);
-  --event-text-subtle: rgb(27, 27, 62);
+  --date: rgb(105, 58, 139); /*rgb(105, 58, 139)*/
+  --sub-date: rgb(134, 58, 139);/*rgb(134, 58, 139)*/
+  --event-text: rgb(242, 217, 248);
+  --event-text-subtle: lavender;
   --border: black;
-  --sween: rgb(37, 97, 71);
 
-    font-family: 'Times New Roman', Times, serif;
+  font-family:  Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
 }
-
-@font-face { font-family: Ruritania; src: url('font/Ruritania.ttf'); } 
-@font-face { font-family: Miki; src: url('font/miki-nice-ainjoo.otf'); } 
-@font-face { font-family: Unifraktur; src: url('font/UnifrakturMaguntia21.ttf'); } 
 
 body {
     background-color: var(--background);
@@ -53,57 +48,67 @@ main {
     width: 500px;
     margin: 10px 20px;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* border-width: 30px;
-    border-style: solid;
-    border-image: url("/img/border-white-gritt.png") 60 fill repeat;*/
 }
 
 .otd-section__title{
     position: relative;
     box-sizing: border-box;
-    padding: 5px;
-    margin: 0;
-
+    /* border: 0.2em solid var(--primary); */
     color: var(--bright);
-
-    font-family: Ruritania;
-    font-size: 1.5rem;
-    letter-spacing: 0.1rem;
-    font-weight: 100;
-    font-style: italic;
-    line-height: 2em;
+    border-width: 30px;
+    border-style: solid;
+    border-image: url("/img/border-white-gritt.png") 60 fill repeat;
 
     background-color:var(--dark);
+    /* background-image: radial-gradient(var(--primary) 15%, transparent 16%),
+    radial-gradient(var(--primary) 15%, transparent 16%);
+    background-size: 20px 20px;
+    background-position: 0 0, 30px 30px; */
 
     width: 100%;
 
-
+    padding: 5px;
+    font-size: 1.125rem;
     text-align: center;
-    transition: color 0.2s;
 
-}
+    /* Drop Shadow don't work */
+    /* This one does vvvvvvvv */
+    /* box-shadow: 0.3em 0.3em 0 6px rgba(0, 0, 0, 1); */
 
-.otd-section__title:hover {
-    color: var(--primary);
-    cursor: pointer;
+    /* &::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+
+        width: 100%;
+        height: 0.5em;
+        vertical-align: bottom;
+        transform: skewx(45deg) translate(-11.08em,1.6em);
+        background: rgba(0, 0, 0, 0.8);
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        transform-origin: 0 0;
+        z-index: -1;
+
+        width: 0.5em;
+        height: 133%;
+        transform: skewy(45deg);
+        top: -0.29em;
+        left: 101%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: -2;
+    } */
 }
 
 .otd-section__container {
     box-sizing: border-box;
     width: 100%;
     padding: 15px;
-    margin: 0;
     border-radius: 15px;
     box-shadow: inset 0px 0px 12px 4px rgba(0, 0, 0, 0.15);
-    /* border-width: 20px;
-    border-style: solid;
-    border-image: url("/img/border-white-gritt.png") 60 fill repeat; */
-    
-    background-color: rgb(221, 224, 234) ;
+    background-color: var(--primary);
     /* background-image: radial-gradient(var(--dark) 15%, transparent 16%),
     radial-gradient(var(--dark) 15%, transparent 16%);
     background-size: 60px 60px;
@@ -129,8 +134,8 @@ main {
     font-size: 1rem;
     box-sizing: border-box;
     /* border: 0.5em solid var(--bright); */
-    background-color: var(--bright);
-    color: var(--dark);
+    background-color: var(--dark);
+    color: rgb(255, 255, 255);
     padding: 0.5em 0.5em 0.3em 0.5em;
 
     display: flex;
@@ -143,8 +148,8 @@ main {
     font-size: 1rem;
     box-sizing: border-box;
     /* border: 0.5em solid var(--bright); */
-    background-color: var(--bright);
-    color: var(--dark);
+    background-color: var(--dark);
+    color: rgb(255, 255, 255);
     padding: 0.5em 0.5em 0.3em 0.5em;
 
     display: flex;
@@ -155,7 +160,7 @@ main {
 
 .otd-event__date {
     grid-area: date;
-    background-color: var(--primary);
+    background-color: var(--date);
     width: 6em;
     height: 6em;
     margin: 0;
@@ -176,7 +181,6 @@ main {
 }
 .otd-event__date--day{ 
     font-size: 4em;
-    font-family: Unifraktur;
 }
 
 
@@ -222,7 +226,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
 }
 
 .otd-event__doors {
@@ -239,9 +243,8 @@ main {
 .otd-section__container--music {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    padding: 0;
-    padding-bottom: 10px;
+    justify-content: space-evenly;
+    background-color: brown;
 }
 .otd-section--social {
     width: fit-content;
@@ -255,6 +258,7 @@ main {
     flex-wrap: nowrap;
     flex-direction: column;
     justify-content: space-evenly;
+    background-color: brown;
     width: fit-content;
 }
 
@@ -274,19 +278,15 @@ main {
 
 .coolButton {
     box-sizing: border-box;
-    background-color: var(--dark); /*brown*/
-
-    border-width: 20px;
-    border-style: solid;
-    border-image: url("/img/border-white-gritt.png") 60 fill repeat;
-
+    border: 0px solid black;
+    background-color: rgb(37, 97, 71); /*brown*/
     display: flex;
     justify-content: center;
     align-items: center;
     color: var(--primary);
-    margin: 20px;
+    margin: 30px;
     flex-shrink: 0;
-    transition: box-shadow 0.15s, border-width 0.1s, width 0.5s, height 0.5s;
+    transition: box-shadow 0.15s, border 0.1s, width 0.5s, height 0.5s, background-color 0.5s;
     text-decoration: none;
     box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.11);
 
@@ -295,18 +295,18 @@ main {
 
 .coolButton:hover {
     box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.25);
-    border-width: 30px;
 }
 
 
 .coolButton:active {
     box-shadow: 4px 4px 16px 0 rgba(0,0,0,0.3);
-    border-width: 40px;
+    border: 5px solid gold;
 }
 
 .bigButton {
     width: 80%;
     height: 80px;
+    filter: drop-shadow(3px 4px black);
 }
 
 
