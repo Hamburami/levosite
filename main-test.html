@@ -13,14 +13,31 @@
         <h1><img src="img/on-the-dot-logo-horizontal.png" width="340" height="80" alt="On the Dot"></h1>
     </header>
 
+    <nav>
+        <h2 class="nav-title title-text state-enabled" id="music-title-nav">Music</h2>
+        <h2 class="nav-title title-text state-disabled" id="shows-title-nav">Upcoming Shows</h2>
+        <h2 class="nav-title title-text state-disabled" id="social-title-nav" >Social</h2>
+    </nav>
+
     <main>
-        <section class="otd-section">
-            <h2 class="otd-section__title" id="shows-title">Upcoming Shows</h2>
-            <ol class="otd-section__container otd-section__container--events" id="shows-content">
+        <section class="otd-section" id="music">
+            <h2 class="otd-section__title title-text" id="music-title">Music</h2>
+            <nav class="otd-section__container otd-section__container--music" id="music-content">
+                <a href="https://onthedot.bandcamp.com/" class="bigButton coolButton" target="_blank">Bandcamp</a>
+                <a href="https://open.spotify.com/artist/4t7RVXD9RwHJz5ZuWjEisU?si=lDKFJz0iR4iY1agDujO_XA" class="diamondButton coolButton" target="_blank"><span>Spotify</span></a>
+                <a href="https://music.apple.com/us/artist/on-the-dot/1647357557" class="diamondButton coolButton" target="_blank"><span>Apple</span></a>
+                <a href="https://music.amazon.com/artists/B0BGMPHSV5/on-the-dot?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_1hbyvfixzk9Bt259J3dL3kuNC" class="diamondButton coolButton" target="_blank"><span>Amazon</span></a>
+                <a href="https://listen.tidal.com/artist/34675267" class="diamondButton coolButton" target="_blank"><span>Tidal</span></a>
+            </nav>
+        </section>
+
+        <section class="otd-section" id="shows">
+            <h2 class="otd-section__title title-text"">Upcoming Shows</h2>
+            <ol class="otd-section__container otd-section__container--events">
                 <li class="otd-event">
-                    <a href="https://www.instagram.com/p/DMoNDSzv6C5/?igsh=MWQxaGV3anJpYmRlNA==" target="_blank">
+                    <!-- <a href="https://www.instagram.com/p/DMoNDSzv6C5/?igsh=MWQxaGV3anJpYmRlNA==" target="_blank"> -->
                         <div class="otd-event__time-info">
-                            <time class="otd-event__date" datetime="2025-08-02"><span class="otd-event__date--month">Aug</span> <span class="otd-event__date--day">2</span></time>
+                            <time class="otd-event__date" datetime="2025-09-02"><span class="otd-event__date--month">Aug</span> <span class="otd-event__date--day">2</span></time>
                             <p class="otd-event__doors">Doors: 2:00pm</p>
                         </div>
                         <div class="otd-event__main-info">
@@ -29,7 +46,7 @@
                             <p class="otd-event__description">4 awesome bands and 5 exceptional DJ's, see you there!</p>
                             <p class="otd-event__additional">Music Till 9:00pm</p>
                         </div>
-                    </a>
+                    <!-- </a> -->
                 </li>
 
                 <li class="otd-event">
@@ -50,25 +67,15 @@
             </ol>
         </section>
         
-        <section class="otd-section">
-            <h2 class="otd-section__title" id="music-title">Music</h2>
-            <nav class="otd-section__container otd-section__container--music" id="music-content">
-                <a href="https://onthedot.bandcamp.com/" class="bigButton coolButton" target="_blank">Bandcamp</a>
-                <a href="https://open.spotify.com/artist/4t7RVXD9RwHJz5ZuWjEisU?si=lDKFJz0iR4iY1agDujO_XA" class="diamondButton coolButton" target="_blank"><span>Spotify</span></a>
-                <a href="https://music.apple.com/us/artist/on-the-dot/1647357557" class="diamondButton coolButton" target="_blank"><span>Apple</span></a>
-                <a href="https://music.amazon.com/artists/B0BGMPHSV5/on-the-dot?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_1hbyvfixzk9Bt259J3dL3kuNC" class="diamondButton coolButton" target="_blank"><span>Amazon</span></a>
-                <a href="https://listen.tidal.com/artist/34675267" class="diamondButton coolButton" target="_blank"><span>Tidal</span></a>
-            </nav>
-        </section>
 
-        <secion class="otd-section otd-section--social">
-            <h2 class="otd-section__title" id="social-title" >Social</h2>
+        <section class="otd-section otd-section--social" id="social">
+            <h2 class="otd-section__title title-text" id="social-title">Social</h2>
             <nav class="otd-section__container otd-section__container--social" id="social-content">
                 <a href="https://instagram.com/onthedotband?igshid=NDRkN2NkYzU=" class="diamondButton coolButton" target="_blank"><span>Instagram</span></a>
                 <a href="https://www.youtube.com/channel/UCuLLAIqkwNndPUKeErRYVig" class="diamondButton coolButton" target="_blank"><span>Youtube</span></a>
-                <a href="https://www.tiktok.com/@onthedotband?_t=8yt7rkzsbwh&_r=1" class="diamondButton coolButton" target="_blank"><span>Tik Tok</span></a>
+                <a href="https://www.tiktok.com/@onthedotband?_t=8yt7rkzsbwh&_r=1" class="diamondButton coolButton" target="_blank"><span>TikTok</span></a>
             </nav>
-        </secion>
+        </section>
         <script src="script.js"></script>
     </main>
     

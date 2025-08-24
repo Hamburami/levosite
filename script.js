@@ -1,10 +1,14 @@
-const showsTitle = document.getElementById("shows-title");
-const musicTitle = document.getElementById("music-title");
-const socialTitle = document.getElementById("social-title");
+const showsElem = document.getElementById("shows");
+const showsTitle = document.getElementById("shows-title-nav");
 
-const showsContent = document.getElementById("shows-content");
-const musicContent= document.getElementById("music-content");
-const socialContent = document.getElementById("social-content");
+const musicElem = document.getElementById("music");
+const musicTitle = document.getElementById("music-title-nav");
+
+const socialElem = document.getElementById("social");
+const socialTitle = document.getElementById("social-title-nav");
+
+let isVertical = false;
+
 
 class section {
     constructor(title, content) {
@@ -13,28 +17,73 @@ class section {
         this.display = content.style.display;
     }
 
-    collapse() {
-        console.log(this.title);
-        console.log(this.content.style.display === "none");
-        console.log(this.display);
-        this.content.style.display = this.content.style.display === "none" ? this.display : "none";
+     show() {
+        this.content.style.display = this.display;
+        this.title.classList.remove("state-disabled");
+        this.title.classList.add("state-enabled");
     }
+
+    hide() {
+        this.content.style.display = "none";
+        this.title.classList.remove("state-enabled");
+        this.title.classList.add("state-disabled");
+    }
+
+    collapse() {
+        if (this.content.style.display === "none") {
+            this.show();
+        } else {
+            this.hide();
+        }
+    }
+
 }
 
-const showsSection = new section(showsTitle, showsContent);
-const musicSection = new section(musicTitle, musicContent);
-const socialSection = new section(socialTitle, socialContent);
+const showsSection = new section(showsTitle, showsElem);
+const musicSection = new section(musicTitle, musicElem);
+const socialSection = new section(socialTitle, socialElem);
 
 
 showsTitle.addEventListener("click", () => {
-    showsSection.collapse();
+    showsSection.show();
+    musicSection.hide();
+    socialSection.hide();
 });
 
 musicTitle.addEventListener("click", () => {
-    musicSection.collapse();
+    showsSection.hide();
+    musicSection.show();
+    socialSection.hide();
 });
 
 socialTitle.addEventListener("click", () => {
-    socialSection.collapse();
+    showsSection.hide();
+    musicSection.hide();
+    socialSection.show();
 });
+
+
+function determineWindowSize(x) {
+    if (x.matches && !isVertical) {
+        musicSection.show();
+        showsSection.hide();
+        socialSection.hide();
+    }
+    isVertical = x.matches;
+    if (isVertical) {
+        // Do something for vertical layout
+    } else {
+        socialSection.show();
+        showsSection.show();
+        musicSection.show();
+    }
+}
+
+let x = window.matchMedia("(max-width: 1095px)");
+
+x.addEventListener("change", function() {
+  determineWindowSize(x);
+});
+
+determineWindowSize(x); //Run this once when the page is loaded
 

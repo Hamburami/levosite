@@ -4,11 +4,12 @@
   --primary: rgb(249, 204, 24);
   --secondary: rgb(246, 226, 137); /*rgb(251, 239, 171)*/
   --dark: black;
-  --bright: white;
+  --bright: rgb(255, 255, 255);
+  --paper:  rgb(241, 235, 221);
   --date: rgb(185, 38, 38); /*rgb(105, 58, 139)*/
   --sub-date: rgb(178, 178, 178);/*rgb(134, 58, 139)*/
-  --event-text: rgb(53, 2, 65);
-  --event-text-subtle: rgb(27, 27, 62);
+  --event-text: rgb(65, 2, 2);
+  --event-text-subtle: rgb(0, 0, 0);
   --border: black;
   --sween: rgb(37, 97, 71);
 
@@ -21,6 +22,10 @@
 
 body {
     background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100dvh;
 }
 
 header {
@@ -37,17 +42,59 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    align-items:start;
-    align-content: start;
+
 }
 
- @media screen and (max-width: 400px) {
+/* Header resizing */
+@media screen and (max-width: 400px) {
     header img {
         width: 88%;
         height: auto;
         margin: 0;
     }
 } 
+
+/* Desktop sections */
+@media screen and (min-width: 1096px) {
+
+    nav {
+        display: none;
+    }
+
+}
+
+/* Mobile Scroll */
+@media screen and (max-width: 1095px) {
+    nav {
+        display: flex;
+        justify-content: space-around;
+        background-color: var(--dark);
+        box-shadow: 0 2px 4px 0 rgb(0, 0, 0, 1);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+    .otd-section__title {
+        display: none;
+    }
+
+    main {
+        flex-direction: column;
+        height: auto;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        flex: 0.8 1 auto;
+    }
+}
+
+
+
+
+
+
+
 
 .otd-section {
     width: 500px;
@@ -62,7 +109,23 @@ main {
     border-image: url("/img/border-white-gritt.png") 60 fill repeat;*/
 }
 
+.otd-section--social {
+    width: fit-content;
+}
+.otd-section--social h2{
+    width: 100%;
+}
+
 .otd-section__title{
+
+
+}
+
+nav a {
+    text-decoration: none;
+}
+
+.title-text { 
     position: relative;
     box-sizing: border-box;
     padding: 5px;
@@ -87,10 +150,37 @@ main {
 
 }
 
-.otd-section__title:hover {
+.nav-title {
+    flex: 1 1 auto;
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.nav-title:hover {
     color: var(--primary);
     cursor: pointer;
 }
+
+.state-enabled {
+    color: var(--primary);
+    font-size: 2em;
+}
+
+.state-disabled {
+    color: var(--bright);
+    font-size: 1.2em;
+    transition: font-size 0.2s;
+}
+
+.state-disabled:hover {
+    color: var(--primary);
+    cursor: pointer;
+    font-size: 2em;
+}
+
 
 .otd-section__container {
     box-sizing: border-box;
@@ -98,12 +188,13 @@ main {
     padding: 15px;
     margin: 0;
     border-radius: 15px;
-    box-shadow: inset 0px 0px 12px 4px rgba(0, 0, 0, 0.15);
-    /* border-width: 20px;
-    border-style: solid;
-    border-image: url("/img/border-white-gritt.png") 60 fill repeat; */
-    
-    background-color: rgb(221, 224, 234) ;
+    box-shadow: inset 2px 2px 8px 2px rgba(255, 255, 255, 0.1);
+   
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    border-right: 1px solid rgba(255, 255, 255, 0.25);
+    z-index: 1;
+
+    /* background-color: rgb(221, 224, 234) ; */
     /* background-image: radial-gradient(var(--dark) 15%, transparent 16%),
     radial-gradient(var(--dark) 15%, transparent 16%);
     background-size: 60px 60px;
@@ -125,11 +216,28 @@ main {
     text-decoration: none;
 }
 
+.otd-section__container--music {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    padding-bottom: 10px;
+}
+
+
+.otd-section__container--social {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: fit-content;
+}
+
 .otd-event > a {
     font-size: 1rem;
     box-sizing: border-box;
     /* border: 0.5em solid var(--bright); */
-    background-color: var(--bright);
+    background-color: var(--paper);
     color: var(--dark);
     padding: 0.5em 0.5em 0.3em 0.5em;
 
@@ -143,7 +251,7 @@ main {
     font-size: 1rem;
     box-sizing: border-box;
     /* border: 0.5em solid var(--bright); */
-    background-color: var(--bright);
+    background-color: var(--paper);
     color: var(--dark);
     padding: 0.5em 0.5em 0.3em 0.5em;
 
@@ -215,7 +323,7 @@ main {
     font-size: 0.8em;
     margin-top: auto;
     text-align: right;
-    color: var(--event-text-subtle);
+    color: var(--event-text);
 }
 
 .otd-event__time-info {
@@ -235,28 +343,6 @@ main {
     background-color: var(--sub-date);
 }
 
-
-.otd-section__container--music {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 0;
-    padding-bottom: 10px;
-}
-.otd-section--social {
-    width: fit-content;
-}
-.otd-section--social h2{
-    width: 100%;
-}
-
-.otd-section__container--social {
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: column;
-    justify-content: space-evenly;
-    width: fit-content;
-}
 
 .diamondButton {  
     width: 80px;
@@ -308,6 +394,4 @@ main {
     width: 80%;
     height: 80px;
 }
-
-
 
