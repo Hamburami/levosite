@@ -12,6 +12,8 @@
   --event-text-subtle: rgb(0, 0, 0);
   --border: black;
   --sween: rgb(37, 97, 71);
+  
+  --vertical-width: 1096px;
 
     font-family: 'Times New Roman', Times, serif;
 }
@@ -134,7 +136,7 @@ nav a {
     color: var(--bright);
 
     font-family: Ruritania;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     letter-spacing: 0.1rem;
     font-weight: 100;
     font-style: italic;
@@ -152,16 +154,11 @@ nav a {
 
 .nav-title {
     flex: 1 1 auto;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
-}
-
-.nav-title:hover {
-    color: var(--primary);
-    cursor: pointer;
 }
 
 .state-enabled {
@@ -176,9 +173,8 @@ nav a {
 }
 
 .state-disabled:hover {
-    color: var(--primary);
     cursor: pointer;
-    font-size: 2em;
+    font-size: 1.9em;
 }
 
 
