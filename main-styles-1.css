@@ -5,7 +5,7 @@
   --secondary: rgb(246, 226, 137); /*rgb(251, 239, 171)*/
   --dark: black;
   --bright: rgb(255, 255, 255);
-  --paper:  rgb(235, 223, 197);
+  --paper:  rgb(241, 235, 221);
   --date: rgb(185, 38, 38); /*rgb(105, 58, 139)*/
   --sub-date: rgb(178, 178, 178);/*rgb(134, 58, 139)*/
   --event-text: rgb(65, 2, 2);
@@ -23,7 +23,7 @@
 @font-face { font-family: Unifraktur; src: url('font/UnifrakturMaguntia21.ttf'); } 
 
 body {
-    background-color: var(--primary);
+    background-color: var(--background);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -32,7 +32,7 @@ body {
 
 header {
     text-align: center;
-    /* filter: invert(1); */
+    filter: invert(1);
 }
 
 header h1 {
@@ -56,19 +56,17 @@ main {
     }
 } 
 
+/* Desktop sections */
+@media screen and (min-width: 1096px) {
+
     nav {
         display: none;
     }
 
-
-/* Desktop sections */
-/* @media screen and (min-width: 1096px) {
-
-
-} */
+}
 
 /* Mobile Scroll */
-/* @media screen and (max-width: 1095px) {
+@media screen and (max-width: 1095px) {
     nav {
         display: flex;
         justify-content: space-around;
@@ -91,10 +89,43 @@ main {
         justify-content: center;
         flex: 0.8 1 auto;
     }
-} */
+}
 
 
 
+
+
+
+
+
+.otd-section {
+    width: 500px;
+    margin: 10px 20px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border-width: 30px;
+    border-style: solid;
+    border-image: url("/img/border-white-gritt.png") 60 fill repeat;*/
+}
+
+.otd-section--social {
+    width: fit-content;
+}
+.otd-section--social h2{
+    width: 100%;
+}
+
+.otd-section__title{
+
+
+}
+
+nav a {
+    text-decoration: none;
+}
 
 .title-text { 
     position: relative;
@@ -102,7 +133,7 @@ main {
     padding: 5px;
     margin: 0;
 
-    color: var(--dark);
+    color: var(--bright);
 
     font-family: Ruritania;
     font-size: 1.8rem;
@@ -111,6 +142,7 @@ main {
     font-style: italic;
     line-height: 2em;
 
+    background-color:var(--dark);
 
     width: 100%;
 
@@ -146,74 +178,17 @@ main {
 }
 
 
-
-
-.otd-section {
-    width: 500px;
-    margin: 10px 20px;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    height: fit-content;
-    background-color: var(--paper);
-
-    border-radius: 15px;
-    box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.3); /* shadow */
-    /* border-width: 30px;
-    border-style: solid;
-    border-image: url("/img/border-white-gritt.png") 60 fill repeat;*/
-
-/* control the size*/
-  /* --s: 73px; 
-  --c1: #fff0d4;
-  --c2: #ddd0b5;
-  --c3: #f9e295;
-  
-  --_g: var(--c1) 10%,var(--c2) 10.5% 19%,#0000 19.5% 80.5%,var(--c2) 81% 89.5%,var(--c3) 90%;
-  --_c: from -90deg at 37.5% 50%,#0000 75%;
-  --_l1: linear-gradient(145deg,var(--_g));
-  --_l2: linear-gradient( 35deg,var(--_g));
-  background: 
-    var(--_l1), var(--_l1) calc(var(--s)/2) var(--s),
-    var(--_l2), var(--_l2) calc(var(--s)/2) var(--s),
-    conic-gradient(var(--_c),var(--c1) 0) calc(var(--s)/8) 0,
-    conic-gradient(var(--_c),var(--c3) 0) calc(var(--s)/2) 0,
-    linear-gradient(90deg,var(--c3) 38%,var(--c1) 0 50%,var(--c3) 0 62%,var(--c1) 0);
-  background-size: var(--s) calc(2*var(--s)/3); */
-}
-
-.otd-section--social {
-    width: fit-content;
-}
-.otd-section--social h2{
-    width: 100%;
-}
-
-.otd-section__title{
-
-
-}
-
-nav a {
-    text-decoration: none;
-}
-
-
 .otd-section__container {
     box-sizing: border-box;
     width: 100%;
     padding: 15px;
     margin: 0;
     border-radius: 15px;
-    box-shadow: inset 2px 2px 12px 1px rgba(252, 206, 42, 0.4); /* highlight */
-    
+    box-shadow: inset 2px 2px 8px 2px rgba(255, 255, 255, 0.1);
    
     border-bottom: 1px solid rgba(255, 255, 255, 0.25);
     border-right: 1px solid rgba(255, 255, 255, 0.25);
     z-index: 1;
-    background-color: var(--dark);
 
     /* background-color: rgb(221, 224, 234) ; */
     /* background-image: radial-gradient(var(--dark) 15%, transparent 16%),
@@ -417,11 +392,11 @@ nav a {
 }
 
 footer {
-    color: var(--dark);
+    color: var(--bright);
     text-align: center;
 }
 
 footer a {
-    color: var(--dark);
+    color: var(--bright);
 }
 
