@@ -22,17 +22,21 @@
 @font-face { font-family: Miki; src: url('font/miki-nice-ainjoo.otf'); } 
 @font-face { font-family: Unifraktur; src: url('font/UnifrakturMaguntia21.ttf'); } 
 
+
+html {
+    height: 100%;
+}
 body {
-    background-color: var(--primary);
+    background-color: var(--dark);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 100dvh;
+    height: 100%;
 }
 
 header {
     text-align: center;
-    /* filter: invert(1); */
+    filter: invert(1);
 }
 
 header h1 {
@@ -157,7 +161,7 @@ main {
     justify-content: flex-end;
     align-items: center;
     height: fit-content;
-    background-color: var(--paper);
+    background-color: var(--primary);
 
     border-radius: 15px;
     box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.3); /* shadow */
@@ -207,7 +211,7 @@ nav a {
     padding: 15px;
     margin: 0;
     border-radius: 15px;
-    box-shadow: inset 2px 2px 12px 1px rgba(252, 206, 42, 0.4); /* highlight */
+    box-shadow: inset -2px 8px 12px 1px rgba(252, 206, 42, 0.2); /* highlight */
     
    
     border-bottom: 1px solid rgba(255, 255, 255, 0.25);
@@ -417,11 +421,27 @@ nav a {
 }
 
 footer {
-    color: var(--dark);
+    position: relative;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 1.1em;
+    color: var(--bright);
     text-align: center;
+
 }
 
 footer a {
-    color: var(--dark);
+    color: var(--bright);
 }
 
+
+
+.invisible-ink {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.invisible-ink:hover {
+    opacity: 1;
+}
