@@ -54,5 +54,11 @@ function newSticker(x, y) {
 
 
 document.addEventListener("click", function(event) {
-  newSticker(event.pageX, event.pageY);
+    const link = event.target.closest("a");
+    const section = event.target.closest("section");
+    const footer = event.target.closest("footer");
+
+    if (!link && !section && !footer) {
+        newSticker(event.pageX, event.pageY);
+    }
 });

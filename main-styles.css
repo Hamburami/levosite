@@ -36,19 +36,19 @@ body {
 
 header {
     text-align: center;
-    filter: invert(1);
 }
 
 header h1 {
     margin: 20px;
     margin-bottom: 40px;
+    filter: invert(1);
 }
 
 main {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-
+    justify-content: space-around;
+    align-items: center;
 }
 
 /* Header resizing */
@@ -131,6 +131,11 @@ a {
     margin: 0;
 }
 
+.header-line {
+   color: var(--primary);
+    margin-bottom: 50px;
+}
+
 .nav-title {
     flex: 1 1 auto;
     /* border: 1px solid red; */
@@ -161,7 +166,7 @@ a {
 
 .otd-section {
     width: 500px;
-    margin: 10px 20px;
+    margin: 25px 20px;
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -203,8 +208,7 @@ a {
 }
 
 .otd-section--gallery {
-    width: 500px;
-    padding: 0;
+    width: min(500px, 95dvw);
 }
 
 /* .otd-section__title{
@@ -402,6 +406,7 @@ nav a {
     border-width: 20px;
     border-style: solid;
     border-image: url("img/border-white-gritt.png") 60 fill repeat;
+    filter: brightness(0.9);
 
     display: flex;
     justify-content: center;
@@ -433,6 +438,7 @@ nav a {
 }
 
 footer {
+    margin-top: 50px;
     position: relative;
     bottom: 0;
     left: 50%;
@@ -440,11 +446,19 @@ footer {
     font-size: 1.1em;
     color: var(--bright);
     text-align: center;
+    border-top: 1px solid var(--primary);
+    width: fit-content;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+}
 
+footer p {
+    color: var(--paper);
 }
 
 footer a {
-    color: var(--bright);
+    color: var(--primary);
 }
 
 
@@ -486,21 +500,17 @@ footer a {
 .otd-section__container--gallery.image-gallery {
     box-sizing: border-box;
     justify-content: flex-start;
-    padding: 0;
     gap: 0px;
     flex-wrap: nowrap;
     height: 250px;
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
     overflow-x: scroll;      /* scroll instead of expanding */
     overflow-y: visible;
 }
 
 .otd-section__container.image-gallery.otd-section__container--gallery {
-  padding: 0;
-  gap: 0;
-  /* …other overrides… */
+  padding: 0 10px;
+  gap: 10px;
+  
 }
 
 .otd-section__container--gallery img{
@@ -512,21 +522,21 @@ footer a {
 }
 
 .otd-section__container--gallery img:hover{
-    transform: perspective(20rem) rotate3d(1,1,1, 1deg);
+    transform: perspective(20rem) rotate3d(1,1,1, 0.5deg) scale(1.02);
 }
 
 
 .otd-section__container--gallery img.ver{
     width: auto!important;
-    height: 100%!important;
+    height: 92%!important;
 }
 .otd-section__container--gallery img.hor{
     width: auto!important;
-    height: 100%!important;
+    height: 92%!important;
 }
 .otd-section__container--gallery img.squ{
     width: auto!important;
-    height: 100%!important;
+    height: 92%!important;
 }
 
 .fade-in {
@@ -556,6 +566,11 @@ footer a {
     display: block;
     width: 100%;
     overflow: visible;
+}
+
+.circle-crop {
+    border-radius: 50%;
+
 }
 
 /* Collumn Image Gallery */
