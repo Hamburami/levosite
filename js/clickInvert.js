@@ -16,6 +16,14 @@ const toggle = () => {
   darkMode = !darkMode;
 };
 
+let touched = false;
 
-document.body.addEventListener("click", toggle);
-document.body.addEventListener("touchstart", toggle);
+document.body.addEventListener('touchstart', e => {
+  touched = true;
+  toggle();
+});
+
+document.body.addEventListener('click', e => {
+  if (!touched) toggle();
+  touched = false;
+});
