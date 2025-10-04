@@ -1,0 +1,161 @@
+
+body {
+    background-color: var(--time-color);
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    font-family: Helvetica, sans-serif;
+    --time-color: rgb(255,255,255);  /* rgb(255,255,255)*/
+    --primary-text: rgb(122, 34, 28); /* rgb(20, 202, 202);  */
+}
+@font-face { font-family: DeiGrat; src: url('font/DeiGrat.ttf'); } 
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    max-width: 100vw;
+    min-width: 100svw;
+    /* overflow: hidden;*/
+} 
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+
+#info {
+    position: absolute;
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: inline;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#dates {
+    position: absolute;
+    font-weight: 100;
+    font-style: italic;
+    font-size: 15px;
+    top: 3%;
+    left: 60%;
+    color: var(--time-color);
+    width:300px;
+}
+
+#date{ 
+    transform: translate(-40%, 0);
+    font-weight: 100;
+}
+
+#day {
+    transform: translate(-55%, 0%);
+    font-weight: 100;
+}
+
+#time {
+    font-weight: 100;
+    transform: translate(15%, 10%);
+
+}
+
+#bands {
+    position: absolute;
+    font-family: DeiGrat, cursive;
+    color: var(--primary-text);
+    right: 0%;
+    bottom: 5%;
+    height: 100px;
+    width: 200px;
+    /* border: 2px solid red; */
+}
+
+#otd {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, 0);
+}
+#dash{
+    top: 0;
+    left: 10%;
+    transform: translate(0, -50%);
+}
+
+#and {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#bp {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+#location {
+    color: var(--primary-text);
+    position: absolute;
+    left: 2%;
+    top: 75%;
+    border: 1px solid var(--primary-text);
+    border-radius: 100px;
+    padding: 10px 30px 10px 30px;
+    background-color: var(--time-color);
+}
+
+#address-title {
+    font-weight: 100;
+    font-style: italic;
+}
+
+#address{
+    font-weight: 200;
+    font-style: italic;
+}
+
+#ticket {
+    position: absolute;
+    left: 2%;
+    top: 85%;
+    color: var(--primary-text);
+    background-color: var(--time-color);
+    padding:10px
+}
+
+#price {
+    font-size: 25px;
+    font-weight: 200;
+    position: absolute;
+    right: 50%;
+    top: 50%;
+}
+
+#venmo {
+    font-style: italic;
+    font-size: 15px;
+    font-weight: 100;
+}
+
+
+img {
+    object-fit: cover;
+    width: 100vw;
+    height: 100%;
+    display: block;
+    /* filter: invert(); */
+    transform: translate(0, -10%);
+}

@@ -403,19 +403,21 @@ nav a {
     box-sizing: border-box;
     background-color: var(--dark); /*brown*/
 
-    border-width: 20px;
+    border: 20px solid var(--bright);
     border-style: solid;
-    border-image: url("img/border-white-gritt.png") 60 fill repeat;
+    border-radius: 15px;
+    border-image: url("img/border-white-gritt.png") 60 fill repeat; 
     filter: brightness(0.9);
 
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--primary);
+    color: var(--bright);
     margin: 20px;
     flex-shrink: 0;
-    transition: box-shadow 0.15s, border-width 0.1s, width 0.5s, height 0.5s;
+    transition: box-shadow 0.15s, border-width 0.1s, width 0.5s, height 0.5s, color 0.2s, font-weight 0.2s, border-color 0.1s;
     text-decoration: none;
+    font-weight: 300;
     box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.11);
 
 }
@@ -423,13 +425,14 @@ nav a {
 
 .coolButton:hover {
     box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.25);
-    border-width: 30px;
+    border-width: 35px;
+    color: var(--primary);
+    font-weight: 900;
 }
 
 
 .coolButton:active {
     box-shadow: 4px 4px 16px 0 rgba(0,0,0,0.3);
-    border-width: 40px;
 }
 
 .bigButton {
