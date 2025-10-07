@@ -84,37 +84,35 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     font-family: DeiGrat, cursive;
     color: var(--primary-text);
-    right: 0%;
+    right: 3%;
     bottom: 5%;
     height: 100px;
-    width: 220px;
+    width: fit-content;
     /* border: 2px solid red; */
+    line-height: 20px;
+    font-size: 20px;
+    /* text-wrap: nowrap; */
 }
 
 #otd {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translate(-50%, 0);
+    text-align: center;
+    /* transform: translate(-50%, 0); */
+    text-wrap: nowrap;
 }
 #dash{
-    top: 0;
-    left: 10%;
-    transform: translate(0, -50%);
+   text-align: center;
 }
 
 #and {
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    text-align: center;
+    /* transform: translate(-50%, -50%); */
+    text-wrap: nowrap;
 }
 
 #bp {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 0);
+   text-align: center;
+    /* transform: translate(-50%, 0); */
+    text-wrap: nowrap;
 }
 
 #location {
