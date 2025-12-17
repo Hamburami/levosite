@@ -6,53 +6,105 @@
     <title>On the Dot</title>
     <link rel="stylesheet" href="main-styles.css">
     <!-- <link rel="stylesheet" href="https://use.typekit.net/hkz1zsl.css"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
 
 </head>
 <body>
     <header>
-        <h1><img src="img/on-the-dot-logo-horizontal.png" width="340" height="80" alt="On the Dot"></h1>
+        <h1><a href="index.html"></a><img src="img/on-the-dot-logo-horizontal.png" width="340" height="80" alt="On the Dot"></a></h1>
     </header>
 
     <nav>
         <h2 class="nav-title title-text state-enabled" id="music-title-nav">Music</h2>
         <h2 class="nav-title title-text state-disabled" id="shows-title-nav">Upcoming Shows</h2>
         <h2 class="nav-title title-text state-disabled" id="social-title-nav" >Social</h2>
+        <h2 class="nav-title title-text state-disabled" id="video-title-nav">Video</h2>
     </nav>
 
     <main>
+        <a class="site-image-frame" href="gallery.html">
+            <img src="img/on-the-dot-on-the-run.jpg" width="100%" height="auto" alt="On the Dot Band Photo" class="site-image">
+        </a>
         <section class="otd-section" id="music">
             <h2 class="otd-section__title title-text" id="music-title">Music</h2>
             <nav class="otd-section__container otd-section__container--music" id="music-content">
-                <a href="https://onthedot.bandcamp.com/" class="bigButton coolButton" target="_blank">Bandcamp</a>
-                <a href="https://open.spotify.com/artist/4t7RVXD9RwHJz5ZuWjEisU?si=lDKFJz0iR4iY1agDujO_XA" class="diamondButton coolButton" target="_blank"><span>Spotify</span></a>
-                <a href="https://music.apple.com/us/artist/on-the-dot/1647357557" class="diamondButton coolButton" target="_blank"><span>Apple</span></a>
-                <a href="https://music.amazon.com/artists/B0BGMPHSV5/on-the-dot?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_1hbyvfixzk9Bt259J3dL3kuNC" class="diamondButton coolButton" target="_blank"><span>Amazon</span></a>
-                <a href="https://listen.tidal.com/artist/34675267" class="diamondButton coolButton" target="_blank"><span>Tidal</span></a>
+                <a href="https://onthedot.bandcamp.com/" class="rect-button" target="_blank">Bandcamp</a>
+                <a href="https://open.spotify.com/artist/4t7RVXD9RwHJz5ZuWjEisU?si=lDKFJz0iR4iY1agDujO_XA" class="diamondButton" target="_blank"><span>Spotify</span></a>
+                <a href="https://music.apple.com/us/artist/on-the-dot/1647357557" class="diamondButton" target="_blank"><span>Apple</span></a>
+                <a href="https://music.amazon.com/artists/B0BGMPHSV5/on-the-dot?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_1hbyvfixzk9Bt259J3dL3kuNC" class="diamondButton" target="_blank"><span>Amazon</span></a>
+                <a href="https://listen.tidal.com/artist/34675267" class="diamondButton" target="_blank"><span>Tidal</span></a>
+                <!-- <a href="https://www.qobuz.com/us-en/interpreter/on-the-dot/15794885" class="diamondButton" target="_blank"><span>Qobuz</span></a> -->
             </nav>
         </section>
-        
 
-        <section class="otd-section otd-section--social" id="social">
+
+        <section class="otd-section" id="social">
             <h2 class="otd-section__title title-text" id="social-title">Social</h2>
             <nav class="otd-section__container otd-section__container--social" id="social-content">
-                <a href="https://instagram.com/onthedotband?igshid=NDRkN2NkYzU=" class="diamondButton coolButton" target="_blank"><span>Instagram</span></a>
-                <a href="https://www.youtube.com/channel/UCuLLAIqkwNndPUKeErRYVig" class="diamondButton coolButton" target="_blank"><span>Youtube</span></a>
-                <a href="https://www.tiktok.com/@onthedotband?_t=8yt7rkzsbwh&_r=1" class="diamondButton coolButton" target="_blank"><span>TikTok</span></a>
+                <div class="diamond-button-group-four">
+                    <a href="https://instagram.com/onthedotband?igshid=NDRkN2NkYzU=" class="group-diamond-button" target="_blank"><span>Instagram</span></a>
+                    <a href="https://www.youtube.com/channel/UCuLLAIqkwNndPUKeErRYVig" class="group-diamond-button" target="_blank"><span>Youtube</span></a>
+                    <a href="https://www.tiktok.com/@onthedotband?_t=8yt7rkzsbwh&_r=1" class="group-diamond-button" target="_blank"><span>TikTok</span></a>
+                </div>
             </nav>
         </section>
 
-        <section class="otd-section otd-section--gallery" id="gallery">
+
+        <a class="site-image-frame" href="gallery.html">
+            <img src="img/on-the-dot-borghese-cropped.jpg" width="100%" height="auto" alt="On the Dot Band Photo" class="site-image">
+        </a>
+
+        <section class="otd-section" id="about">
+            <h2 class="otd-section__title title-text" id="about-title">About</h2>
+            <div class="otd-section__container otd-section__container--text" id="about-content">
+                <p>On the Dot is an independent band from Boulder, Colorado. Their music is defined by a lively spirit, constant collaboration, and stylistic variety. The band was formed in 2022 through a shared passion of songwriting and live rock music. Since formation, the band has released two self-produced albums and has played numerous live shows across Colorado. The band is currently working on their next project and continues to play live shows thoughout Boulder.</p>
+            </div>
+        </section>
+
+        
+        
+
+        <!-- <section class="otd-section" id="gallery">
             <a href="gallery.html" class="block-anchor">
                 <h2 class="otd-section__title title-text" id="gallery-title">Gallery</h2>
                 <div class="otd-section__container image-gallery otd-section__container--gallery" id="gallery-content">
                     <img src="img/on-the-dot-skate-bowl.jpeg" width="960" height="540" class="hor">
                     <img src="img/on-the-dot-mirror.jpeg" width="512" height="768" class="ver ">
-                    <img src="img/on-the-dot-lawn.JPG" width="683" height="1024" class="ver">
-                    <img src="img/original-dot.png" width="1112" height="811" class="hor">
+                    <img src="img/on-the-dot-lawn.JPG" width="683" height="1024" class="ver invert-hue">
                 </div>
             </a>
-        </section>
+        </section> -->
 
+        <section class="otd-section" id="video">
+            <h2 class="otd-section__title title-text" id="video-title">Videos</h2>
+            <div class="otd-section__container otd-section__container--video-menu" id="video-content">
+
+                <div class="video-button" href="https://www.youtube.com/embed/vxqhaIh028Q">
+                    <img class="video-button__thumbnail" src="img/thumbnails/passing-time-close.jpeg">
+                    <p class="video-button__title">Passing Time</p>
+                </div>
+                <div class="video-button" href="https://www.youtube.com/embed/2DR-yxMZxwI">
+                    <img class="video-button__thumbnail" src="img/thumbnails/on-the-dot-in-a-hole-small.jpeg">
+                    <p class="video-button__title">Borghese</p>
+                </div>
+                <div class="video-button" href="https://www.youtube.com/embed/-vRtMaZXPds">
+                    <img class="video-button__thumbnail" src="img/thumbnails/calder-throwing-rocks.jpeg">
+                    <p class="video-button__title">Throwing Rocks</p>
+                </div>
+                <!-- <iframe width="90%" height="315"
+                    src="https://www.youtube.com/embed/vxqhaIh028Q" frameborder="0" allowfullscreen>
+                </iframe>
+                <iframe width="90%" height="315"
+                    src="https://www.youtube.com/embed/2DR-yxMZxwI" frameborder="0" allowfullscreen>
+                </iframe>
+                <iframe width="90%" height="315"
+                    src="https://www.youtube.com/embed/-vRtMaZXPds" frameborder="0" allowfullscreen>
+                </iframe> -->
+            <!-- https://youtu.be/-->
+            </div>
+        </section>
 
         <section class="otd-section" id="shows">
             <h2 class="otd-section__title title-text"">Upcoming Shows</h2>

@@ -1,3 +1,5 @@
+
+
 const stickerPreload = new Image();
 stickerPreload.src = "img/on-the-dot-sticker.png";
 
@@ -57,8 +59,89 @@ document.addEventListener("click", function(event) {
     const link = event.target.closest("a");
     const section = event.target.closest("section");
     const footer = event.target.closest("footer");
+    const headerh1 = event.target.closest("header h1");
 
-    if (!link && !section && !footer) {
+    if (!link && !section && !footer && !headerh1) {
         newSticker(event.pageX, event.pageY);
     }
 });
+
+
+
+const videoButtons = document.getElementsByClassName("video-button");
+const videoContainer = document.getElementById("video-content");
+
+function selectVideo (event) {
+    console.log("Video selected");
+    
+    const clickedButton = event.currentTarget;
+    const videoUrl = clickedButton.getAttribute("href");
+    
+    // Animate the clicked button
+    clickedButton.style.transition = "transform 0.5s ease";
+    clickedButton.style.transform = "rotate(360deg) scale(1.2)";
+    
+    // Wait for animation to complete before clearing
+    setTimeout(() => {
+        videoContainer.innerHTML = "";
+        
+        // Create close button
+        const closeButton = document.createElement("div");
+        closeButton.textContent = "✕";
+        closeButton.style.position = "absolute";
+        closeButton.style.top = "10px";
+        closeButton.style.right = "10px";
+        closeButton.style.color = "var(--primary)";
+        closeButton.style.fontSize = "2rem";
+        closeButton.style.cursor = "pointer";
+        closeButton.style.zIndex = "10";
+        closeButton.addEventListener("click", videoMenu);
+        
+        const videoFrame = document.createElement("iframe");
+        videoFrame.src = videoUrl + "?autoplay=1";
+        videoFrame.width = "90%";
+        videoFrame.height = "350px";
+        videoFrame.setAttribute("frameborder", "0");
+        videoFrame.allow = "autoplay; picture-in-picture";
+        videoFrame.allowFullscreen = true;
+        videoFrame.setAttribute("autoplay", "1");
+
+        videoContainer.appendChild(closeButton);
+        videoContainer.appendChild(videoFrame);
+        videoContainer.style.position = "relative";
+        videoContainer.classList.remove("otd-section__container--video-menu");
+        videoContainer.classList.add("otd-section__container--video-player");
+    }, 500);
+}
+
+for (let i = 0; i < videoButtons.length; i++) {
+    videoButtons[i].addEventListener("click", selectVideo);
+}
+
+
+function videoMenu() {
+    videoContainer.innerHTML = `
+        <div class="video-button" href="https://www.youtube.com/embed/vxqhaIh028Q">
+            <img class="video-button__thumbnail" src="img/thumbnails/passing-time-close.jpeg">
+            <p class="video-button__title">Passing Time</p>
+        </div>
+        <div class="video-button" href="https://www.youtube.com/embed/2DR-yxMZxwI">
+            <img class="video-button__thumbnail" src="img/thumbnails/on-the-dot-in-a-hole-small.jpeg">
+            <p class="video-button__title">Borghese</p>
+        </div>
+        <div class="video-button" href="https://www.youtube.com/embed/-vRtMaZXPds">
+            <img class="video-button__thumbnail" src="img/thumbnails/calder-throwing-rocks.jpeg">
+            <p class="video-button__title">Throwing Rocks</p>
+        </div>
+    `;
+    
+    videoContainer.classList.remove("otd-section__container--video-player");
+    videoContainer.classList.add("otd-section__container--video-menu");
+    
+    // Re-attach click listeners to the buttons
+    const newButtons = videoContainer.getElementsByClassName("video-button");
+    for (let i = 0; i < newButtons.length; i++) {
+        newButtons[i].addEventListener("click", selectVideo);
+    }
+}
+
