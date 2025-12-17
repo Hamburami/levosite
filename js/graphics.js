@@ -61,7 +61,7 @@ document.addEventListener("click", function(event) {
     const footer = event.target.closest("footer");
     const headerh1 = event.target.closest("header h1");
 
-    if (!link && !section && !footer && !headerh1) {
+    if (!link && !section && !footer && !headerh1 && !event.target.classList.contains('ui')) {
         newSticker(event.pageX, event.pageY);
     }
 });
@@ -76,10 +76,18 @@ function selectVideo (event) {
     
     const clickedButton = event.currentTarget;
     const videoUrl = clickedButton.getAttribute("href");
+    const buttonImg = clickedButton.querySelector("img");
+    const videoTitle = clickedButton.querySelector("p");
     
-    // Animate the clicked button
-    clickedButton.style.transition = "transform 0.5s ease";
-    clickedButton.style.transform = "rotate(360deg) scale(1.2)";
+    // Animate the image inside the clicked button
+    if (buttonImg) {
+        buttonImg.style.transition = "transform 0.2s";
+        buttonImg.style.transform = "rotate(360deg) translate(0, -10px) scale(1.18)";
+        videoTitle.style.transition = "transform 0.2s";
+        videoTitle.style.transform = "scale(1.2)";
+        clickedButton.style.transition = "filter 0.5s";
+        clickedButton.style.filter = "brightness(120%)";
+    }
     
     // Wait for animation to complete before clearing
     setTimeout(() => {
@@ -87,10 +95,11 @@ function selectVideo (event) {
         
         // Create close button
         const closeButton = document.createElement("div");
+        closeButton.classList.add("ui");
         closeButton.textContent = "✕";
         closeButton.style.position = "absolute";
         closeButton.style.top = "10px";
-        closeButton.style.right = "10px";
+        closeButton.style.right = "15px";
         closeButton.style.color = "var(--primary)";
         closeButton.style.fontSize = "2rem";
         closeButton.style.cursor = "pointer";
@@ -99,7 +108,7 @@ function selectVideo (event) {
         
         const videoFrame = document.createElement("iframe");
         videoFrame.src = videoUrl + "?autoplay=1";
-        videoFrame.width = "90%";
+        videoFrame.width = "95%";
         videoFrame.height = "350px";
         videoFrame.setAttribute("frameborder", "0");
         videoFrame.allow = "autoplay; picture-in-picture";

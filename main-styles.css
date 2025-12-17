@@ -326,19 +326,22 @@ main {
 
 .otd-section__container--video-menu {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
+
+    background-color: rgb(8,12,10);
     
-    height: 400px;
+    height: 300px;
 }
 
 .otd-section__container--video-player {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 400px;
+    height: 435px;
+    padding-top: 80px;
 }
 
 
@@ -352,11 +355,15 @@ main {
     border-image: url("img/border-light.png") 60 repeat; 
     margin-bottom: 10px;
     transition: border-width 0.2s;
+    background-color: rgb(0, 0, 0);
+    background-clip: border-box;
+    background-origin: border-box;
+
 }
 
 .video-button:hover {
     border-width: 27px;
-}
+}   
 
 .video-button img {
     object-fit: cover;
@@ -748,6 +755,15 @@ footer a {
 }
 
 .invisible-ink:hover {
+    opacity: 1;
+}
+
+.faded-ink {
+    opacity: 0.85;
+    transition: opacity 1s;
+}
+
+.faded-ink:hover {
     opacity: 1;
 }
 
