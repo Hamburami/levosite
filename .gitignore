@@ -1,0 +1,25 @@
+.DS_Store
+
+# Wrangler / Cloudflare
+.wrangler/
+.wrangler-*/
+.dev.vars
+.env
+.env.*
+
+# If we override HOME to keep Wrangler writable inside the repo (used by tooling/sandboxes)
+.home/
+
+butt/
+d1/
+
+wrangler.toml
+worker.js
+
+# Local SQLite/D1 artifacts
+*.db
+*.sqlite
+*.sqlite3
+*.sqlite3-journal
+
+

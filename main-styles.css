@@ -7,12 +7,14 @@
   --primary: rgb(244, 195, 18); /* rgb(249, 204, 24); */
   --secondary: rgb(246, 226, 137); /*rgb(251, 239, 171)*/
   --dark: black;
+  --less-dark: rgb(8,12,10);
+  --event-background: rgb(7, 2, 0);
   --bright: rgb(255, 255, 255);
   --paper:  rgb(235, 223, 197);
   --date: rgb(185, 38, 38); /*rgb(105, 58, 139)*/
-  --sub-date: rgb(178, 178, 178);/*rgb(134, 58, 139)*/
-  --event-text: rgb(65, 2, 2);
-  --event-text-subtle: rgb(0, 0, 0);
+  --sub-date: rgb(69, 69, 69);/*rgb(134, 58, 139)*/
+  --event-text: rgb(254, 254, 254);
+  --event-text-subtle: rgb(249, 243, 243);
   --border: black;
   --sween: rgb(37, 97, 71);
   
@@ -267,7 +269,7 @@ main {
     
     border-radius: 0 0 15px 15px;
     box-shadow: inset 0px 1px 16px -6px rgba(252, 206, 42, 0.66); /* highlight */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.25); */
     z-index: 1;
     background-color: var(--dark);
 
@@ -285,6 +287,13 @@ main {
     display: flex;
     flex-direction: column;
     list-style: none;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--event-background);
+    /* <ol>/<ul> have default indent (padding/margin) that makes centering look "off" */
+    padding: 20px 0;
+    padding-inline-start: 0;
+    margin: 0;
 }
 
 .otd-section__container--events a:link{
@@ -331,7 +340,7 @@ main {
     flex-direction: row;
     flex-wrap: wrap;
 
-    background-color: rgb(8,12,10);
+    background-color: var(--less-dark);
     
     height: 300px;
 }
@@ -409,33 +418,23 @@ main {
    ========================================================= */
 
    
+.otd-event:not(:has(> a)), 
 .otd-event > a {
     font-size: 1rem;
     box-sizing: border-box;
     /* border: 0.5em solid var(--bright); */
-    background-color: var(--paper);
-    color: var(--dark);
-    padding: 0.5em 0.5em 0.3em 0.5em;
+    background-color: var(--less-dark);
+    color: var(--event-text);
+    padding: 0.5em 0.5em 0.4em 0.5em;
 
     display: flex;
 
     margin: 10px;
-    box-shadow: 0px 8px 8px -6px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 2px 12px -3px rgba(243, 186, 1, 0.5);
+    border-radius: 8px;
+    
 }
 
-.otd-event:not(:has(> a)) {
-    font-size: 1rem;
-    box-sizing: border-box;
-    /* border: 0.5em solid var(--bright); */
-    background-color: var(--paper);
-    color: var(--dark);
-    padding: 0.5em 0.5em 0.3em 0.5em;
-
-    display: flex;
-
-    margin: 10px;
-    box-shadow: 0px 8px 8px -6px rgba(0, 0, 0, 0.5);
-}
 
 .otd-event__date {
     grid-area: date;
@@ -445,7 +444,7 @@ main {
     margin: 0;
     
     text-align: center;
- 
+    color: var(--dark);
 }
 
 .otd-event__date--month{ 
@@ -475,9 +474,10 @@ main {
 }
 
 
-.otd-event__location {
+.otd-event__title {
     margin: 0;
     text-align: center;
+    color: var(--primary);
 }
 
 .otd-event__lineup {
@@ -507,6 +507,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    color: var(--primary);
 }
 
 .otd-event__doors {
