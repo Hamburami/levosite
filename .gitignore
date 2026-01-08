@@ -10,7 +10,6 @@
 # If we override HOME to keep Wrangler writable inside the repo (used by tooling/sandboxes)
 .home/
 
-butt/
 d1/
 
 wrangler.toml

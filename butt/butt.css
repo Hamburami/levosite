@@ -1,0 +1,356 @@
+/* butt.html specific styling
+   - Keeps the same overall site vibe by inheriting `main-styles.css`
+   - Overrides layout so the backend is centered and single-column
+*/
+
+/* Center and de-grid the main container (main-styles.css makes main a 2-col grid on desktop) */
+main.admin-wrap {
+  width: min(900px, calc(100% - 40px));
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px 60px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  justify-items: unset;
+}
+
+.is-hidden { display: none !important; }
+
+/* Portal card: reserve space for the top-left/top-right action buttons */
+#portalCard .otd-section__container {
+  position: relative;
+  padding-top: 64px;
+}
+
+.admin-top-actions {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none; /* lets underlying content be clickable */
+}
+
+.admin-top-button {
+  pointer-events: auto;
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 8px 10px;
+  margin: 0;
+  color: var(--bright);
+  font-family: 'Cormorant Garamond', Times, serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.admin-top-button:hover {
+  color: var(--primary);
+  background: rgba(244,195,18,0.08);
+}
+
+.admin-top-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(244,195,18,0.18);
+  background: rgba(244,195,18,0.08);
+}
+
+.admin-wrap { width: 100%; }
+.admin-note { color: var(--bright); font-size: 1rem; margin: 0; padding: 10px 10px; display: flex; justify-content: center; align-items: center;}
+.admin-note b { color: var(--primary); }
+
+/* Headings (separate from notes for cleaner semantics) */
+.admin-heading {
+  color: var(--bright);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0;
+  font-size: 1.52rem;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  margin-top: 12px;
+  margin-bottom: 6px;
+}
+.admin-heading b { color: var(--primary); }
+
+.admin-note--spaced { margin-top: 18px; }
+.admin-row { display: grid; grid-template-columns: 1fr; gap: 14px; padding: 0 18px; }
+.admin-row--spaced { margin-top: 16px; }
+@media screen and (min-width: 900px) { .admin-row { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+label { color: var(--bright); font-style: italic; display: block; margin-bottom: 6px; }
+input, textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(0,0,0,0.55);
+  color: var(--bright);
+  border: 1px solid rgba(244,195,18,0.45);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-family: 'Cormorant Garamond', Times, serif;
+  font-size: 1rem;
+  outline: none;
+}
+textarea { min-height: 110px; resize: vertical; }
+input:focus, textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(244,195,18,0.15); }
+
+/* Grid helpers for admin form */
+.admin-field--full { grid-column: 1 / -1; }
+
+/* Login card: keep passphrase input centered and stable-width (don't switch at the 900px grid breakpoint) */
+#loginCard .admin-row.admin-row--login {
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+#loginCard .admin-row.admin-row--login > div {
+  width: min(420px, calc(100vw - 76px));
+}
+
+#loginCard .admin-row.admin-row--login label {
+  text-align: center;
+}
+
+#loginCard .admin-row.admin-row--login input[type="password"] {
+  text-align: center;
+}
+
+.admin-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; padding: 14px 18px 0; }
+.admin-actions--flush { padding-top: 0; }
+.admin-actions .rect-button { width: auto; min-width: 220px; height: 70px; margin: 0; }
+.admin-actions .rect-button[disabled] { opacity: 0.6; cursor: not-allowed; }
+
+/* Collapsible JSON footer (replaces the always-visible bottom output box + preview button) */
+.admin-footer {
+  margin: 18px;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(244,195,18,0.25);
+  overflow: clip;
+}
+
+.admin-footer__summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 12px 16px;
+  color: var(--bright);
+  font-style: italic;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-footer__summary::-webkit-details-marker { display: none; }
+
+.admin-footer[open] .admin-footer__summary {
+  border-bottom: 1px solid rgba(244,195,18,0.18);
+}
+
+.admin-footer__body {
+  padding: 12px 14px 14px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media screen and (min-width: 900px) {
+  .admin-footer__body { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.admin-footer__label {
+  margin: 0 0 6px 0;
+  color: rgba(244,195,18,0.9);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.admin-footer__pre {
+  margin: 0;
+  padding: 12px 12px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(244,195,18,0.18);
+  color: var(--paper);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.82rem;
+  line-height: 1.25;
+  white-space: pre-wrap;
+  word-break: break-word;
+  min-height: 60px;
+}
+
+.admin-divider {
+  border: 0;
+  border-top: 1px solid rgba(244,195,18,0.35);
+  margin: 18px;
+}
+
+/* Backend buttons: override the global border-image style with a simple rounded CSS border */
+main.admin-wrap .rect-button {
+  border-image: none !important;
+  border: 2px solid rgba(255,255,255,0.8) !important;
+  border-radius: 14px !important;
+  background-color: rgba(0,0,0,0.65) !important;
+  box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.25) !important;
+  filter: none !important;
+  /* Use the site body font (instead of the global button font) for admin buttons */
+  font-family: 'Cormorant Garamond', Times, serif !important;
+  font-style: italic;
+  font-weight: 700;
+}
+
+main.admin-wrap .rect-button:hover,
+main.admin-wrap .rect-button:focus-visible {
+  border-color: rgba(244,195,18,1) !important;
+  box-shadow: 4px 8px 16px 0 rgba(244,195,18,0.18) !important;
+}
+
+.admin-output {
+  margin: 18px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(244,195,18,0.25);
+  color: var(--paper);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Don't show an empty "output box" before the user does anything */
+#loginOutput:empty { display: none; }
+
+.admin-title {
+  color: var(--bright);
+  font-family: Unifraktur;
+  font-size: 1.2rem;
+  margin: 0 0 8px 0;
+  text-align: center;
+}
+
+/* Events preview list (match public site style, with an admin delete control beside each) */
+.butt-events {
+  padding: 0 18px 12px;
+}
+
+/* Keep the public list look, but let rows breathe a bit */
+.butt-events__list {
+  border-radius: 12px;
+}
+
+.butt-events__status {
+  margin: 0;
+}
+
+/* Event lists: keep padding tight (avoid inherited .otd-section__container 30px top/bottom) */
+.butt-events__list {
+  padding: 14px 0;
+  box-shadow: inset 0px 1px 16px -6px rgba(252, 206, 42, 0.33);
+}
+
+/* Center the empty-state/status text without forcing big fixed heights */
+.butt-events__status {
+  padding: 18px 18px;
+}
+
+/* Past events header toggle (simple + readable) */
+.admin-heading.admin-heading--toggle {
+  /* Buttons don't always inherit typography by default */
+  font: inherit;
+  letter-spacing: inherit;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  border-radius: 12px;
+  position: relative;
+}
+
+.admin-heading.admin-heading--toggle::after {
+  content: "▾";
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(244,195,18,0.85);
+  transition: transform 0.15s ease;
+}
+
+.admin-heading.admin-heading--toggle.is-open::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.admin-heading.admin-heading--toggle:hover {
+  background: rgba(244,195,18,0.06);
+}
+
+.admin-heading.admin-heading--toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(244,195,18,0.18);
+}
+
+.butt-event-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.butt-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.butt-edit.rect-button {
+  width: auto;
+  min-width: 150px;
+  height: 64px;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.butt-delete.rect-button {
+  width: auto;
+  min-width: 150px;
+  height: 64px;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.butt-delete.rect-button:hover,
+.butt-delete.rect-button:focus-visible {
+  color: rgb(211, 0, 0);
+  background-color: rgb(120, 12, 12);
+  box-shadow: 4px 8px 16px 0 rgba(120, 12, 12, 0.35);
+  border-color: rgb(211, 0, 0) !important;
+}
+
+/* Extra specificity so Delete always wins over the generic yellow hover */
+main.admin-wrap .butt-delete.rect-button:hover,
+main.admin-wrap .butt-delete.rect-button:focus-visible {
+  border-color: rgb(211, 0, 0) !important;
+}
+
+.butt-event-row--past > a {
+  filter: saturate(0.5) brightness(0.9);
+  opacity: 0.9;
+}
+
+
+
