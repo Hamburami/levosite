@@ -288,7 +288,8 @@ main {
     flex-direction: column;
     list-style: none;
     justify-content: center;
-    align-items: center;
+    /* Stretch so each <li> can own its horizontal padding consistently */
+    align-items: stretch;
     background-color: var(--event-background);
     /* <ol>/<ul> have default indent (padding/margin) that makes centering look "off" */
     padding: 20px 0;
@@ -429,10 +430,18 @@ main {
 
     display: flex;
 
-    margin: 10px;
+    /* Vertical spacing only; horizontal spacing comes from the <li> padding */
+    margin: 10px 0;
     box-shadow: 0px 2px 12px -3px rgba(243, 186, 1, 0.5);
     border-radius: 8px;
-    
+    width: 100%;
+}
+
+.otd-event {
+    width: 100%;
+    box-sizing: border-box;
+    /* This is the "inset" that your example event appears to have */
+    padding: 0 16px;
 }
 
 
@@ -492,6 +501,9 @@ main {
     font-size: 0.8em;
     margin-top: 0.5em;
     color: var(--event-text-subtle);
+    /* Force the main-info column to have a consistent minimum width,
+       so short descriptions don't make the whole event card shrink. */
+    min-width: 18rem;
 }
 
 .otd-event__additional {

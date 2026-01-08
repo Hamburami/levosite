@@ -122,8 +122,10 @@
 
         <section class="otd-section" id="shows">
             <h2 class="otd-section__title title-text"">Upcoming Shows</h2>
-             <ol class="otd-section__container otd-section__container--events">
-                <!-- <p class="color-text center tall-100">no shows yet</p> -->
+             <ol class="otd-section__container otd-section__container--events" id="events-list">
+                <p class="color-text center tall-100" id="events-status">loading...</p>
+                <!-- Events are rendered here by js/events.js -->
+                
                 <li class="otd-event">
                     <a href="https://rosettahall.com/live-music/" target="_blank">
                         <div class="otd-event__time-info">
@@ -138,7 +140,9 @@
                         </div>
                     </a> 
                 </li>
+               
             </ol>
+            
         </section>
 
         <div class="faded-ink" style="display: flex; flex-direction: row; align-items: center; justify-content: center; gap:20px; padding: 15px;">
@@ -156,6 +160,7 @@
 
     <script src="js/graphics.js"></script>
     <script src="js/img-scroll.js"></script>
+    <script src="js/events.js"></script>
 </body>
 </html>  
 
