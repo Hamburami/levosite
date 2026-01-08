@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <base href="/butt/">
+  <title>OtD Backend</title>
+
+  <!-- Reuse the exact same styling system as index.html -->
+  <link rel="stylesheet" href="../main-styles.css" />
+  <link rel="stylesheet" href="butt.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <h1>
+      <a href="../index.html">
+        <img src="../img/on-the-dot-logo-horizontal.png" width="340" height="80" alt="On the Dot" />
+      </a>
+    </h1>
+  </header>
+
+  <main class="admin-wrap">
+    <section class="otd-section" id="loginCard">
+      <h2 class="otd-section__title title-text">Login</h2>
+      <div class="otd-section__container">
+        <p class="admin-title">On the Dot's Backend</p>
+        <p class="admin-note">
+          Enter the passphrase to enter the Butt Portal
+        </p>
+
+        <div class="admin-row admin-row--login admin-row--spaced">
+          <div>
+            <label for="token">Admin Passphrase</label>
+            <input id="token" type="password" autocomplete="off" placeholder="••••••••••••" />
+          </div>
+        </div>
+        <input id="apiBase" type="hidden" value="" />
+
+        <div class="admin-actions">
+          <button class="rect-button" id="btnLogin" type="button">Login</button>
+        </div>
+
+        <div class="admin-output" id="loginOutput"></div>
+      </div>
+    </section>
+
+    <section class="otd-section is-hidden" id="portalCard">
+      <h2 class="otd-section__title title-text">Butt Portal</h2>
+      <div class="otd-section__container">
+        <!-- <p class="admin-note">
+          Logged in. Add and remove OtD events here.
+        </p> -->
+
+        <div class="admin-top-actions" aria-label="Portal actions">
+          <button class="admin-top-button" id="btnRefresh" type="button">Refresh</button>
+          <button class="admin-top-button" id="btnLogout" type="button">Logout</button>
+        </div>
+
+        <div class="butt-events">
+          <p class="admin-heading"><b>Current events</b></p>
+          <ol class="otd-section__container--events butt-events__list" id="currentEventsList">
+            <p class="color-text center butt-events__status" id="currentEventsStatus">Loading...</p>
+          </ol>
+
+          <button class="admin-heading admin-heading--toggle" id="btnTogglePast" type="button" aria-expanded="false" aria-controls="pastEventsList">
+            <b>Past events</b>
+          </button>
+          <ol class="otd-section__container--events butt-events__list butt-events__list--past is-hidden" id="pastEventsList" aria-hidden="true">
+            <p class="color-text center butt-events__status" id="pastEventsStatus">Loading...</p>
+          </ol>
+        </div>
+
+        <hr class="admin-divider" />
+
+        <!-- Add Event -->
+        <div id="addEventSection">
+          <p class="admin-heading"><b>Add Event</b></p>
+
+          <div class="admin-row admin-row--spaced">
+
+            <div>
+              <label for="event_title">Title (required)</label>
+              <input id="event_title" type="text" placeholder="October House Show" />
+            </div>
+            <div>
+              <label for="event_date">Date (required)</label>
+              <input id="event_date" type="date" />
+            </div>
+
+            <div class="admin-field admin-field--full">
+              <label for="link_url">Link (optional)</label>
+              <input id="link_url" type="url" placeholder="https://venue.com/tickets or /some-page.html" />
+            </div>
+
+
+            <div>
+              <label for="event_location">Location</label>
+              <input id="event_location" type="text" placeholder="3665 Moorhead Ave" />
+            </div>
+            <div>
+              <label for="event_lineup">Lineup</label>
+              <input id="event_lineup" type="text" placeholder="On the Dot, Big Pinch" />
+            </div>
+
+
+            <div>
+              <label for="start_local">Start time (optional, local)</label>
+              <input id="start_local" type="time" />
+            </div>
+            <div>
+              <label for="end_local">End time (optional, local)</label>
+              <input id="end_local" type="time" />
+            </div>
+
+            <div class="admin-field admin-field--full">
+              <label for="event_description">Description</label>
+              <textarea id="event_description" placeholder="Limited merch prints..."></textarea>
+            </div>
+
+            <div class="admin-field admin-field--full">
+              <label for="event_additional">Additional</label>
+              <input id="event_additional" type="text" placeholder="Doors 8pm · $8 · etc." />
+            </div>
+          </div>
+
+          <div class="admin-actions">
+            <button class="rect-button" id="btnSubmit" type="button">Create Event</button>
+          </div>
+        </div>
+
+        <!-- Edit Event (hidden until "Edit" clicked) -->
+        <div id="editEventSection" class="is-hidden">
+          <p class="admin-heading"><b>Edit Event</b></p>
+          <p class="admin-note" id="editEventMeta">Editing event</p>
+
+          <div class="admin-row admin-row--spaced">
+
+            <div>
+              <label for="edit_event_title">Title (required)</label>
+              <input id="edit_event_title" type="text" placeholder="October House Show" />
+            </div>
+            <div>
+              <label for="edit_event_date">Date (required)</label>
+              <input id="edit_event_date" type="date" />
+            </div>
+
+            <div class="admin-field admin-field--full">
+              <label for="edit_link_url">Link (optional)</label>
+              <input id="edit_link_url" type="url" placeholder="https://venue.com/tickets or /some-page.html" />
+            </div>
+
+
+            <div>
+              <label for="edit_event_location">Location</label>
+              <input id="edit_event_location" type="text" placeholder="3665 Moorhead Ave" />
+            </div>
+            <div>
+              <label for="edit_event_lineup">Lineup</label>
+              <input id="edit_event_lineup" type="text" placeholder="On the Dot, Big Pinch" />
+            </div>
+
+
+            <div>
+              <label for="edit_start_local">Start time (optional, local)</label>
+              <input id="edit_start_local" type="time" />
+            </div>
+            <div>
+              <label for="edit_end_local">End time (optional, local)</label>
+              <input id="edit_end_local" type="time" />
+            </div>
+
+            <div class="admin-field admin-field--full">
+              <label for="edit_event_description">Description</label>
+              <textarea id="edit_event_description" placeholder="Limited merch prints..."></textarea>
+            </div>
+
+            <div class="admin-field admin-field--full">
+              <label for="edit_event_additional">Additional</label>
+              <input id="edit_event_additional" type="text" placeholder="Doors 8pm · $8 · etc." />
+            </div>
+          </div>
+
+          <div class="admin-actions">
+            <button class="rect-button" id="btnUpdate" type="button">Update Event</button>
+            <button class="rect-button" id="btnCancelEdit" type="button">Cancel</button>
+          </div>
+        </div>
+
+        <details class="admin-footer" id="jsonFooter">
+          <summary class="admin-footer__summary">More Info</summary>
+          <div class="admin-footer__body">
+            <div class="admin-footer__section">
+              <p class="admin-footer__label">Preview payload</p>
+              <pre class="admin-footer__pre" id="previewOutput"></pre>
+            </div>
+            <div class="admin-footer__section">
+              <p class="admin-footer__label">Last response</p>
+              <pre class="admin-footer__pre" id="output"></pre>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <script src="butt.js"></script>
+</body>
+</html>
+
