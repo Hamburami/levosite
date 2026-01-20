@@ -151,10 +151,17 @@ function renderPreviewEventRow(ev, { isPast }) {
   mainInfo.appendChild(makeEl("h3", "otd-event__title", ev.event_title || ""));
   if (ev.event_lineup) mainInfo.appendChild(makeEl("h4", "otd-event__lineup", ev.event_lineup));
   if (ev.event_description) mainInfo.appendChild(makeEl("p", "otd-event__description", ev.event_description));
-  if (ev.event_additional) {
-    mainInfo.appendChild(makeEl("p", "otd-event__additional", ev.event_additional));
-  } else if (ev.event_location) {
-    mainInfo.appendChild(makeEl("p", "otd-event__additional", ev.event_location));
+  // Display address (location) with additional info afterwards when both exist.
+  // Previously, additional "won" and location disappeared.
+  const loc = (typeof ev.event_location === "string" && ev.event_location.trim())
+    ? ev.event_location.trim()
+    : "";
+  const add = (typeof ev.event_additional === "string" && ev.event_additional.trim())
+    ? ev.event_additional.trim()
+    : "";
+  const metaText = (loc && add) ? `${loc} · ${add}` : (loc || add);
+  if (metaText) {
+    mainInfo.appendChild(makeEl("p", "otd-event__additional", metaText));
   }
 
   a.appendChild(timeInfo);

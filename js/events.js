@@ -72,11 +72,17 @@
     if (event.event_description) {
       mainInfo.appendChild(makeEl("p", "otd-event__description", event.event_description));
     }
-    if (event.event_additional) {
-      mainInfo.appendChild(makeEl("p", "otd-event__additional", event.event_additional));
-    } else if (event.event_location) {
-      // If they only filled location, show it as "additional" line to match the layout.
-      mainInfo.appendChild(makeEl("p", "otd-event__additional", event.event_location));
+    // Display address (location) with additional info afterwards when both exist.
+    // Previously, additional "won" and location disappeared.
+    const loc = (typeof event.event_location === "string" && event.event_location.trim())
+      ? event.event_location.trim()
+      : "";
+    const add = (typeof event.event_additional === "string" && event.event_additional.trim())
+      ? event.event_additional.trim()
+      : "";
+    const metaText = (loc && add) ? `${loc} · ${add}` : (loc || add);
+    if (metaText) {
+      mainInfo.appendChild(makeEl("p", "otd-event__additional", metaText));
     }
 
     // Match the existing hand-authored markup as closely as possible:
