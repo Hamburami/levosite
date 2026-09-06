@@ -1,4 +1,4 @@
-body {
+/*body {
     background-color: goldenrod;
 }
 
@@ -47,6 +47,13 @@ header {
     background-color: rgb(220, 168, 34);
     border: 50px solid rgb(255, 183, 1);
 }
+
+
+.banner {
+    height: 200px;
+}
+
+
 .line-boundary{
     width: 100vw;
     height: 100vh;
@@ -82,6 +89,7 @@ header {
     transform: rotate(-0.125turn);
 }
 /* Above does what below does, maybe better */
+/*
 .levelText {
     transform: rotate(-0.125turn);
 }
@@ -100,18 +108,21 @@ header {
 
 .group {
     /* border: 1px solid gold; */
+    /*
     border-radius: 25px;
     display: flex;
     flex-direction: row;
     justify-content:space-evenly;
     flex-wrap: wrap;
     /* align-items: center; */
+    /*
     align-content: center;
     width: 1000px;
     height: 500px;
     margin-left: auto;
     margin-right: auto;
 }
+/*
 
 .rand {
     box-sizing: border-box;
@@ -149,7 +160,7 @@ header {
 /* .portalImg:active {
     background-image: ;
 } */
-
+/*
 .tranY {
     transform: translateY(-50px);
 }
@@ -189,3 +200,6 @@ header {
 .buttonSequence__bl {grid-area: botLeft;}
 .buttonSequence__bm {grid-area: botMiddle;}
 .buttonSequence__br {grid-area: botRight;}
+
+
+*/
